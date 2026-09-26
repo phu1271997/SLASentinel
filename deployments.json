@@ -1,0 +1,9 @@
+{
+  "network": "studionet",
+  "chainId": 61999,
+  "deployer": "0x8b563A8c9eeF530300e92E26457D1AB001daEcC7",
+  "contract": "SLASentinel",
+  "address": "0xDA88AE54259213fDC1e5E11Eda54F2c2881FED07",
+  "tx": "0xf17fcc7991eb3ec890cc135f667830e624de95a89c85e92bddd744e5bc0b541d",
+  "explorer": "https://genlayer-explorer.vercel.app/address/0xDA88AE54259213fDC1e5E11Eda54F2c2881FED07"
+}
