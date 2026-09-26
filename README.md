@@ -7,10 +7,14 @@
 > a breach occurred and how severe it was, and release the service credit
 > automatically — no provider sign-off.
 
-**Live app:** _(Vercel URL — see below)_
-**Contract (studionet):** `0xDA88AE54259213fDC1e5E11Eda54F2c2881FED07`
-**Explorer:** https://genlayer-explorer.vercel.app/address/0xDA88AE54259213fDC1e5E11Eda54F2c2881FED07
+**Contract (studionet):** `0xe324584BF3b34adbC38960867c430Cd19b9a3B7F`
+**Explorer:** https://genlayer-explorer.vercel.app/address/0xe324584BF3b34adbC38960867c430Cd19b9a3B7F
 **Network:** GenLayer **studionet** (chain id `61999`), via GenLayer Studio.
+
+_Verified live end-to-end: a real incident post-mortem was judged `UPHELD /
+CRITICAL` (confidence 99) and paid a 1.5 GEN tiered credit; a bogus claim was
+`REJECTED` and its bond forfeited — all via real validator consensus. See
+`scripts/e2e_studionet.py`._
 
 ---
 
@@ -152,6 +156,15 @@ AI's `reason` plus a link to the transaction on the Explorer.
 source ~/.genlayer/env.sh
 cd tests && gltest --network studionet
 ```
+
+## Runtime note — challenge window
+
+The challenge window is enforced with the GenVM wall-clock
+(`gl.vm.get_timestamp()`). On the current hosted studionet build that clock is
+not exposed, so the contract detects the missing clock (epoch `0`) and treats the
+window as **advisory** — settlement is permitted immediately while the provider
+can still challenge beforehand. On any build that exposes the clock, the full
+7-day (configurable) time-gate is enforced automatically with no code change.
 
 ## Tech
 
